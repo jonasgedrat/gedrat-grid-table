@@ -1,0 +1,55 @@
+{
+  "name": "gedrat-grid-table",
+  "version": "0.0.1",
+  "description": "TableLess Css-grid table",
+  "keywords": [    
+    "react",
+    "component",
+    "components",
+    "ecosystem-react",
+    "react-component"
+  ],
+  "homepage": "https://github.com/jonasgedrat/gedrat-grid-table",
+  "bugs": {
+    "url": "https://github.com/jonasgedrat/gedrat-grid-table/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Jonas Gedrat"    
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonasgedrat/gedrat-grid-table.git"
+  },
+"scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "test": "vitest"
+},
+  "dependencies": {
+  
+  },
+  "devDependencies": {  
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.6.3",
+    "vite":"^5.4.10",
+    "vitest": "^2.1.4"
+  },
+  "peerDependencies": { 
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  } 
+}

@@ -1,2 +1,1 @@
-# gedrat-grid-table
-TableLess css-grid table
+# Gedrat TableLess Css-grid table
