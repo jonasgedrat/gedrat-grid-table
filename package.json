@@ -19,7 +19,7 @@
   "author": {
     "name": "Jonas Gedrat"    
   },
-    "sideEffects": false,
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jonasgedrat/gedrat-grid-table.git"
@@ -28,8 +28,7 @@
     "dev": "pnpm run --filter web dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx,css,scss}\""
-  },
-  
+  }, 
  
   "devDependencies": {
     "react": "^18.3.1",

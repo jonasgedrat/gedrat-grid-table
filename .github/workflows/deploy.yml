@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -28,7 +28,7 @@ jobs:
         run: pnpm install
 
       - name: Build the project
-        run: pnpm run build --filter web
+        run: pnpm --filter web  build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
