@@ -2,6 +2,7 @@
   "name": "@gedrat/grid-table",
   "version": "0.0.1",
   "description": "css grid table html table less ",
+  "private":"false",
   "keywords": [
     "grid table"
   ],
