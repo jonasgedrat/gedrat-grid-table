@@ -1,0 +1,20 @@
+/* mesma configuracao de fonte do sitrad-web */
+body {
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  height: 100vh;
+  min-height: 100vh;
+}
+
+$border-radius: 0.4rem;
+$primary: #a16100;
+
+$alert-padding-y: 0.4rem;
+
+:root {
+  --bg-green: #00605954;
+  --bg-red: red;
+  --bg-blue: blue;
+}
+
