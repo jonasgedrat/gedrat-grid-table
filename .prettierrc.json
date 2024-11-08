@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/prettierrc.json",
-  "printWidth": 100,
+  "printWidth": 80,
   "tabWidth": 2,
   "useTabs": false,
   "semi": false,
@@ -10,4 +10,3 @@
   "endOfLine": "auto",
   "arrowParens": "always"
 }
-

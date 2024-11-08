@@ -32,12 +32,7 @@
     "clean": "pnpm clean:node-modules && pnpm clean:dist &&  pnpm install",
     "clean:node-modules": "npx rimraf --glob **/node_modules",
     "clean:dist": "npx rimraf --glob **/dist",
-    "check": "eslint .  --fix",
-    "lint": "pnpm lint:pkg && pnpm lint:web",
-    "lint:web": "eslint -c .eslintrc.json ./web/**/*.{ts,tsx}",
-    "lint:pkg": "eslint -c .eslintrc.json ./packages/**/*.{ts,tsx}",
-    "lint:fix": "eslint --fix -c .eslintrc.json ./packages/**/*.{ts,tsx}",
-    "lint:web-fix": "eslint --fix -c .eslintrc.json ./web/**/*.{ts,tsx}"
+    "check": "eslint .  --fix"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.9",

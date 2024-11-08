@@ -18,7 +18,11 @@ const GridTableRows = <T extends object>({
             const cellValue = `${record[column.name]}`
 
             const cellData =
-              cellValue === '' ? '' : column?.type === 'number' ? Number(cellValue) : cellValue
+              cellValue === ''
+                ? ''
+                : column?.type === 'number'
+                  ? Number(cellValue)
+                  : cellValue
 
             return (
               <div

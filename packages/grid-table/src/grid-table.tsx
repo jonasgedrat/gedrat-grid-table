@@ -42,7 +42,11 @@ const GridTable = <T extends object>(props: IGridTable<T>) => {
           sortConfig={sortConfig}
         />
 
-        <GridTableRows data={sortedData} columns={columns} rowStyle={gridTableStyles.rowStyle} />
+        <GridTableRows
+          data={sortedData}
+          columns={columns}
+          rowStyle={gridTableStyles.rowStyle}
+        />
       </div>
     </div>
   )
