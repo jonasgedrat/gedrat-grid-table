@@ -1,0 +1,43 @@
+name: Release npm
+
+on:
+  push:
+    paths:
+      - '.changeset/**'
+      - 'packages/**'
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  build:
+    name: release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/common-actions/install
+
+      - run: pnpm --filter grid-table  build
+      - uses: actions/upload-artifact@v3
+        with:
+          name: production-files
+          path: ./packages/grid-table/dist
+
+      #- name: Tests
+      #  run: pnpm test
+
+      - name: Create Release Pull Request or Publish to NPM
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release
+          title: 'ci(changesets): :package: version packages'
+          commit: 'ci(changesets): version packages'
+          setupGitUser: false
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
