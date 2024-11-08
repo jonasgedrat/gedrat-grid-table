@@ -1,7 +1,7 @@
 import React from 'react'
 import { IColumn } from './types'
 
-const GridTableRows = <T extends {}>({
+const GridTableRows = <T extends object>({
   data,
   columns,
   rowStyle,
@@ -18,11 +18,7 @@ const GridTableRows = <T extends {}>({
             const cellValue = `${record[column.name]}`
 
             const cellData =
-              cellValue === ''
-                ? ''
-                : column?.type === 'number'
-                  ? Number(cellValue)
-                  : cellValue
+              cellValue === '' ? '' : column?.type === 'number' ? Number(cellValue) : cellValue
 
             return (
               <div

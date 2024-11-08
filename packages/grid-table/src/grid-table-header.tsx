@@ -1,7 +1,7 @@
 import React from 'react'
 import { IColumn } from './types'
 
-const GridTableHeader = <T extends {}>({
+const GridTableHeader = <T extends object>({
   columns,
   headerStyle,
   sortable,

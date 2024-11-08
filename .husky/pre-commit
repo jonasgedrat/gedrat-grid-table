@@ -7,3 +7,4 @@ if [ -t 2 ]; then
 fi
 
 pnpm lint-staged -c .lintstagedrc.cjs
+#pnpm check

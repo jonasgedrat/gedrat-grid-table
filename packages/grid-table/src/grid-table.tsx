@@ -5,7 +5,7 @@ import GridTableHeader from './grid-table-header'
 import GridTableRows from './grid-table-rows'
 import useSort from './useSort'
 
-const GridTable = <T extends {}>(props: IGridTable<T>) => {
+const GridTable = <T extends object>(props: IGridTable<T>) => {
   const {
     data = [],
     columns = [],
@@ -16,7 +16,7 @@ const GridTable = <T extends {}>(props: IGridTable<T>) => {
   } = props
 
   const { containerRef, containerStyle } = useGridTable(resizable)
-  const { sortedData, handleSort, sortConfig } = useSort(data, columns)
+  const { sortedData, handleSort, sortConfig } = useSort(data)
 
   if (!Array.isArray(data) || data.length === 0) {
     return <h5>{noDataText}</h5>
@@ -42,11 +42,7 @@ const GridTable = <T extends {}>(props: IGridTable<T>) => {
           sortConfig={sortConfig}
         />
 
-        <GridTableRows
-          data={sortedData}
-          columns={columns}
-          rowStyle={gridTableStyles.rowStyle}
-        />
+        <GridTableRows data={sortedData} columns={columns} rowStyle={gridTableStyles.rowStyle} />
       </div>
     </div>
   )

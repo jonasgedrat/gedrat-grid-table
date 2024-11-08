@@ -6,7 +6,7 @@ export interface IGridTableStyles {
   rowStyle: React.CSSProperties
 }
 
-export type FieldValues = Record<string, any>
+export type FieldValues = Record<string, unknown>
 export type FieldName<F extends FieldValues> = keyof F & string
 
 export interface IColumn<F extends FieldValues> {
