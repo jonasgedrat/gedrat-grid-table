@@ -2,8 +2,14 @@ name: Deploy to GitHub Pages
 
 on:
   push:
+    paths:
+      - '.changeset/**'
+      - 'packages/**'
     branches:
       - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   build:
