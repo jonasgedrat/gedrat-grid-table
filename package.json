@@ -1,15 +1,15 @@
 {
- "name": "gedrat-grid-table",
+  "name": "gedrat-grid-table",
   "version": "0.0.1",
   "description": "TableLess Css-grid table",
-  "private":"false",  
-    "keywords": [  
-      "TableLess grid" ,
-      "react",
-      "component",
-      "components",
-      "ecosystem-react",
-      "react-component"
+  "private": "false",
+  "keywords": [
+    "TableLess grid",
+    "react",
+    "component",
+    "components",
+    "ecosystem-react",
+    "react-component"
   ],
   "homepage": "https://github.com/jonasgedrat/gedrat-grid-table",
   "bugs": {
@@ -18,7 +18,7 @@
   "license": "MIT",
   "author": {
     "name": "Jonas Gedrat",
-    "email": "jonasgedrat@outlook.com"    
+    "email": "jonasgedrat@outlook.com"
   },
   "sideEffects": false,
   "repository": {
@@ -31,16 +31,23 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx,css,scss}\"",
     "clean": "pnpm clean:node-modules && pnpm clean:dist &&  pnpm install",
     "clean:node-modules": "npx rimraf --glob **/node_modules",
-    "clean:dist": "npx rimraf --glob **/dist"   
-    
-
-  }, 
- 
+    "clean:dist": "npx rimraf --glob **/dist",
+    "lint": "pnpm lint:pkg && pnpm lint:web",
+    "lint:web": "eslint -c .eslintrc.json ./web/**/*.{ts,tsx}",
+    "lint:pkg": "eslint -c .eslintrc.json ./packages/**/*.{ts,tsx}",
+    "lint:fix": "eslint --fix -c .eslintrc.json ./packages/**/*.{ts,tsx}",
+    "lint:web-fix": "eslint --fix -c .eslintrc.json ./web/**/*.{ts,tsx}"
+  },
   "devDependencies": {
-    "@changesets/cli":"^2.27.9",
+    "@changesets/cli": "^2.27.9",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "commitlint-plugin-function-rules": "^4.0.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "prettier":"^3.3.3",
+    "prettier": "^3.3.3",
     "typescript": "^5.6.3",
     "ts-node": "^10.9.2",
     "tsup": "^8.3.5",
@@ -56,5 +63,4 @@
     "node": ">=20.x",
     "pnpm": ">=9.x"
   }
-
 }
