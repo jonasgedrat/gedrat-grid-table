@@ -4,13 +4,10 @@ description: "Sets up Node.js and runs install"
 runs:
   runs-on: ubuntu-latest
   using: composite
-  steps:   
+  steps:     
     - uses: actions/checkout@v4   
-    - name: Install dependencies
-      uses: pnpm/action-setup@v4
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+    - uses: pnpm/action-setup@v4
+    - uses: actions/setup-node@v4
       with:
         node-version-file: ".nvmrc"
         registry-url: "https://registry.npmjs.org"
