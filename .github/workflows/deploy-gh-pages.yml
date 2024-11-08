@@ -12,12 +12,13 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
+  shared-install:
+    uses: ./.github/common-actions/install
   build:
+    needs: shared-install
     runs-on: ubuntu-latest
-    steps:
-      - name: Install - shared
-        uses: ./.github/common-actions/install
 
+    steps:
       - run: pnpm --filter web  build
       - uses: actions/upload-artifact@v3
         with:

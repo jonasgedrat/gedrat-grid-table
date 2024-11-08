@@ -2,12 +2,10 @@ name: "Install-shared"
 description: "Sets up Node.js and runs install"
 
 runs:
+  runs-on: ubuntu-latest
   using: composite
-  steps:
-
-    - name: Checkout branch
-      uses: actions/checkout@v4  
-      
+  steps:   
+    - uses: actions/checkout@v4   
     - name: Install dependencies
       uses: pnpm/action-setup@v4
 

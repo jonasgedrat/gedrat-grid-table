@@ -28,7 +28,12 @@
   "scripts": {
     "dev": "pnpm run --filter web dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx,css,scss}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx,css,scss}\"",
+    "clean": "pnpm clean:node-modules && pnpm clean:dist &&  pnpm install",
+    "clean:node-modules": "npx rimraf --glob **/node_modules",
+    "clean:dist": "npx rimraf --glob **/dist"   
+    
+
   }, 
  
   "devDependencies": {
