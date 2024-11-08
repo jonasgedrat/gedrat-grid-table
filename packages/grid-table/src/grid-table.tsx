@@ -1,11 +1,11 @@
-import { IGridTable } from './types'
+import { FieldValues, IGridTable } from './types'
 import { defaultGridTableStyles } from './styles'
 import { useGridTable } from './useGridTable'
 import GridTableHeader from './grid-table-header'
 import GridTableRows from './grid-table-rows'
 import useSort from './useSort'
 
-const GridTable = <T extends object>(props: IGridTable<T>) => {
+const GridTable = <T extends FieldValues>(props: IGridTable<T>) => {
   const {
     data = [],
     columns = [],

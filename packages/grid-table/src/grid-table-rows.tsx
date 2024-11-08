@@ -1,7 +1,7 @@
 import React from 'react'
-import { IColumn } from './types'
+import { FieldValues, IColumn } from './types'
 
-const GridTableRows = <T extends object>({
+const GridTableRows = <T extends FieldValues>({
   data,
   columns,
   rowStyle,

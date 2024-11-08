@@ -1,7 +1,7 @@
 import React from 'react'
-import { IColumn } from './types'
+import { FieldValues, IColumn } from './types'
 
-const GridTableHeader = <T extends object>({
+const GridTableHeader = <T extends FieldValues>({
   columns,
   headerStyle,
   sortable,
