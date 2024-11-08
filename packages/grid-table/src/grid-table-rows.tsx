@@ -17,13 +17,6 @@ const GridTableRows = <T extends FieldValues>({
           {columns.map((column) => {
             const cellValue = `${record[column.name]}`
 
-            const cellData =
-              cellValue === ''
-                ? ''
-                : column?.type === 'number'
-                  ? Number(cellValue)
-                  : cellValue
-
             return (
               <div
                 key={`${rowIndex}-${column.name}`}
@@ -31,13 +24,13 @@ const GridTableRows = <T extends FieldValues>({
                   ...rowStyle,
                   backgroundColor:
                     rowIndex % 2 === 0
-                      ? 'var(--bs-grid-table-row-bg)'
-                      : 'var(--bs-grid-table-row-even-bg)',
+                      ? 'var(--grid-table-row-bg)'
+                      : 'var(--grid-table-row-even-bg)',
 
                   textAlign: column.align,
                 }}
               >
-                {cellData}
+                {cellValue}
               </div>
             )
           })}
