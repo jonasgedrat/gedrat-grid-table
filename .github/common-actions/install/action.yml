@@ -1,8 +1,7 @@
 name: "Install-shared"
 description: "Sets up Node.js and runs install"
 
-runs:
-  runs-on: ubuntu-latest
+runs:  
   using: composite
   steps:         
     - uses: pnpm/action-setup@v4
