@@ -4,8 +4,7 @@ description: "Sets up Node.js and runs install"
 runs:
   runs-on: ubuntu-latest
   using: composite
-  steps:     
-    - uses: actions/checkout@v4   
+  steps:         
     - uses: pnpm/action-setup@v4
     - uses: actions/setup-node@v4
       with:
