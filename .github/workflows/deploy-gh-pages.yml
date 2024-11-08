@@ -9,22 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4.0.0
-        with:
-          version: latest
-          run_install: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
-          registry-url: 'https://registry.npmjs.org/'
-      - run: pnpm install
+      - name: Install - shared
+        uses: ./.github/common-actions/install
+
       - run: pnpm --filter web  build
       - uses: actions/upload-artifact@v3
         with:
           name: production-files
           path: ./web/dist
+
+      #- name: Tests
+      #  run: pnpm test
 
   deploy:
     needs: build
