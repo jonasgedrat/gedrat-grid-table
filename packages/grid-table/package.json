@@ -1,8 +1,8 @@
 {
   "name": "@gedrat/grid-table",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "css grid table html table less ",
-  "private":"false",
+  "private": "false",
   "keywords": [
     "grid table"
   ],
