@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { FieldName, GridTable } from '@gedrat/grid-table'
 import { columns, MyData } from './data'
 import { hugeData } from './hugeData'
+import { Trash } from 'lucide-react'
 
 const GridTableExample = () => {
   const [selected, setSelected] = useState<MyData | undefined>()
@@ -25,7 +26,7 @@ const GridTableExample = () => {
 
     if (columnName === '') {
       if (isActive) {
-        return <div onClick={() => handleDelete(record)}>delete</div>
+        return <Trash onClick={() => handleDelete(record)} />
       }
       return <>-</>
     }
