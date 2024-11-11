@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { FieldName, GridTable } from '@gedrat/grid-table'
-import { columns, MyData } from './data'
+import { columns, MyData } from './config'
 import { hugeData } from './hugeData'
-import { Trash } from 'lucide-react'
+import { Trash2 } from 'lucide-react'
 
 const GridTableExample = () => {
   const [selected, setSelected] = useState<MyData | undefined>()
@@ -21,27 +21,32 @@ const GridTableExample = () => {
   }
 
   //optional
-  const customRender = (record: MyData, columnName: FieldName<MyData>) => {
-    const isActive = record === selected
+  const customRender = useCallback(
+    (record: MyData, columnName: FieldName<MyData>) => {
+      const isActive = record === selected
 
-    if (columnName === '') {
-      if (isActive) {
-        return <Trash onClick={() => handleDelete(record)} />
+      if (columnName === '') {
+        if (isActive) {
+          return <Trash2 onClick={() => handleDelete(record)} />
+        }
+        return <></>
       }
-      return <>-</>
-    }
 
-    const cellValue = `${record[columnName]}`
+      const cellValue = `${record[columnName]}`
 
-    if (columnName === 'name') {
-      return (
-        <div className={`${isActive ? '' : 'text-warning'} fw-bold`}>
-          {cellValue}
-        </div>
-      )
-    }
-    return <>{cellValue}</>
-  }
+      if (columnName === 'name') {
+        return (
+          <div className={`${isActive ? '' : 'text-warning'} fw-bold`}>
+            {cellValue} {cellValue} {cellValue} {cellValue} {cellValue}{' '}
+            {cellValue}
+          </div>
+        )
+      }
+      return <>{cellValue}</>
+    },
+
+    [selected]
+  )
 
   return (
     <div>

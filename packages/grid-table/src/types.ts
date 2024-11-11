@@ -4,6 +4,7 @@ export type FieldName<F extends FieldValues> = keyof F & string
 export interface IColumn<F extends FieldValues> {
   name: FieldName<F>
   align?: 'left' | 'right' | 'center'
+  width?: number
 }
 
 export interface IGridTable<T extends FieldValues> {

@@ -22,7 +22,7 @@ export const hugeData: HugeData[] = [
   },
   {
     id: 3,
-    name: 'Rodrique',
+    name: 'Rodrigo',
     userId: 26,
     creationDate: '3/20/2024',
   },

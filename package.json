@@ -35,7 +35,6 @@
     "check": "eslint .  --fix"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.9",
     "@eslint/js": "^9.14.0",
     "eslint": "^9.14.0",
     "eslint-plugin-react": "^7.37.2",

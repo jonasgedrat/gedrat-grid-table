@@ -29,6 +29,14 @@ const GridTable = <T extends FieldValues>(props: IGridTable<T>) => {
   }
 
   const selectable = handleSelect ? 'selectable' : ''
+  const colsWidth: string[] = []
+  columns.forEach((x) => {
+    if (x.width) {
+      colsWidth.push(x.width + 'px')
+      return
+    }
+    colsWidth.push('1fr')
+  })
 
   return (
     <div style={{ margin: 1, padding: 1 }}>
@@ -38,7 +46,7 @@ const GridTable = <T extends FieldValues>(props: IGridTable<T>) => {
         style={{
           ...containerStyle,
           display: 'grid',
-          gridTemplateColumns: `repeat(${columns.length}, 1fr)`,
+          gridTemplateColumns: `${colsWidth.join(' ')}`,
           gridAutoRows: 'min-content',
         }}
       >
