@@ -1,19 +1,58 @@
-/* mesma configuracao de fonte do sitrad-web */
-body {
-  overflow-x: hidden;
-  font-family: 'Roboto', sans-serif !important;
-  -webkit-font-smoothing: antialiased;
-  height: 100vh;
-  min-height: 100vh;
+:root {
+  --gedrat-grid-bg-color: rgba(0, 0, 0, 0.178);
+  --gedrat-grid-bg-zebra-color: rgba(9, 189, 90, 0.089);
+  --gedrat-row-cell-border: solid 1px rgba(167, 160, 160, 0.07);
+  --gedrat-grid-cells-space: 3px;
+  --gedrat-grid-cells-radius: 7px;
 }
 
-$border-radius: 0.4rem;
-$primary: #a16100;
+.gedrat-grid-table {
+  width: 100% !important;
+  text-wrap: wrap;
+  background-color: var(--gedrat-grid-bg-color);
 
-$alert-padding-y: 0.4rem;
+  .gedrat-grid-row-cell {
+    padding: var(--gedrat-grid-cells-space);
+    border-top: var(--gedrat-row-cell-border);
+    border-bottom: var(--gedrat-row-cell-border);
+    margin-bottom: var(--gedrat-grid-cells-space);
 
-:root {
-  --bg-green: #00605954;
-  --bg-red: red;
-  --bg-blue: blue;
+    &.start-cell {
+      border-left: var(--gedrat-row-cell-border);
+      margin-left: var(--gedrat-grid-cells-space);
+      border-radius: var(--gedrat-grid-cells-radius) 0 0
+        var(--gedrat-grid-cells-radius);
+    }
+
+    &.end-cell {
+      border-right: var(--gedrat-row-cell-border);
+      border-radius: 0 var(--gedrat-grid-cells-radius)
+        var(--gedrat-grid-cells-radius) 0;
+      margin-right: var(--gedrat-grid-cells-space);
+    }
+  }
+
+  .gedrat-grid-table-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    text-wrap: nowrap;
+    background-color: var(--bs-dark-bg-subtle);
+
+    padding: var(--gedrat-grid-cells-space);
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+
+    &.start-cell {
+      // background-color: red;
+    }
+    &.end-cell {
+      // background-color: red;
+    }
+  }
+
+  .zebra {
+    background-color: var(--gedrat-grid-bg-zebra-color);
+  }
 }

@@ -14,8 +14,6 @@ export const columns: IColumn<MyData>[] = [
   {
     name: 'creationDate',
     align: 'center',
-
-    component: <div>Creation Date</div>,
   },
 ]
 

@@ -1,4 +1,3 @@
-import { IGridTableStyles } from './types'
 const bsBorder =
   'var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)!important'
 
@@ -25,7 +24,7 @@ const rowStyle: React.CSSProperties = {
   backgroundColor: 'var(--bs-secondary-bg)',
 }
 
-export const defaultGridTableStyles: IGridTableStyles = {
+export const defaultGridTableStyles = {
   containerStyle,
   headerStyle,
   rowStyle,

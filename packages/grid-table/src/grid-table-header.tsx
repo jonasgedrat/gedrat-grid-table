@@ -1,15 +1,12 @@
-import React from 'react'
 import { FieldValues, IColumn } from './types'
 
 const GridTableHeader = <T extends FieldValues>({
   columns,
-  headerStyle,
   sortable,
   handleSort,
   sortConfig,
 }: {
   columns: IColumn<T>[]
-  headerStyle: React.CSSProperties
   sortable: boolean
   handleSort: (columnName: keyof T) => void
   sortConfig: { key: string; direction: 'asc' | 'desc' }
@@ -18,34 +15,35 @@ const GridTableHeader = <T extends FieldValues>({
     return <h5>No columns provided</h5>
   }
 
+  console.log(sortConfig)
+
+  const colsLength = columns.length
   return (
     <>
-      {columns.map((column) => {
-        const { component } = column
+      {columns.map((column, i) => {
+        const positionClassName =
+          i === 0 ? 'start-cell' : i === colsLength - 1 ? 'end-cell' : ''
+
+        const sortText =
+          sortConfig.key === ''
+            ? ''
+            : sortConfig.key !== column.name
+              ? ''
+              : sortConfig.key === column.name && sortConfig.direction === 'asc'
+                ? '↑'
+                : '↓'
 
         return (
           <div
             key={column.name as string}
+            className={`gedrat-grid-table-header ${positionClassName}`}
             style={{
-              ...headerStyle,
-              position: 'sticky',
-              top: 0,
-              zIndex: 1,
               cursor: sortable ? 'pointer' : 'default',
             }}
             onClick={() => sortable && handleSort(column.name)}
           >
-            <div
-              style={{
-                display: 'flex',
-                textAlign: column.align,
-              }}
-            >
-              {component ? component : column.name}
-              {sortConfig.key === column.name && (
-                <span>{sortConfig.direction === 'asc' ? '↑' : '↓'}</span>
-              )}
-            </div>
+            {sortText} {sortText && <>&nbsp;</>}
+            {column.name}
           </div>
         )
       })}

@@ -1,11 +1,14 @@
 
 # GridTable Component
 
+## Super simple table less grid component that just works.
+
+
 ```typescript
 import React from 'react';
 import { IGridTable, IColumn, IGridTableStyles, FieldValues } from './GridTable';
 
-// Define the data interface
+//data interface
 interface UserData  {
   name: string;
   age: number;
@@ -17,27 +20,21 @@ const data: UserData[] = [
   { name: 'Bob', age: 30, email: 'bob@example.com' },
 ];
 
+//columns definition
 const columns: IColumn<UserData>[] = [
   { name: 'name', align: 'left' },
   { name: 'age', align: 'center' },
   { name: 'email', align: 'right' },
 ];
 
-// Optional styles
-const gridTableStyles: IGridTableStyles = {
-  containerStyle: { padding: '10px', border: '1px solid #ccc' },
-  headerStyle: { backgroundColor: '#f4f4f4', fontWeight: 'bold' },
-  rowStyle: { borderBottom: '1px solid #e0e0e0' },
-};
-
-//usage
+//component usage
 const UserDataGridTable = () => {
   return (
     <GridTable
       data={data}
-      columns={columns}
-      gridTableStyles={gridTableStyles}   
+      columns={columns}   
       noDataText="No data available"
+      sortable resizable
     />
   );
 };
@@ -45,6 +42,69 @@ const UserDataGridTable = () => {
 export default UserDataGridTable;
 ```
 
+
+## Style example
+```css
+:root {
+  --gedrat-grid-bg-color: rgba(0, 0, 0, 0.178);
+  --gedrat-grid-bg-zebra-color: rgba(9, 189, 90, 0.089);
+  --gedrat-row-cell-border: solid 1px rgba(167, 160, 160, 0.07);
+  --gedrat-grid-cells-space: 3px;
+  --gedrat-grid-cells-radius: 7px;
+}
+
+.gedrat-grid-table {
+  width: 100% !important;
+  text-wrap: wrap;
+  background-color: var(--gedrat-grid-bg-color);
+
+  .gedrat-grid-row-cell {
+    padding: var(--gedrat-grid-cells-space);
+    border-top: var(--gedrat-row-cell-border);
+    border-bottom: var(--gedrat-row-cell-border);
+    margin-bottom: var(--gedrat-grid-cells-space);
+
+    &.start-cell {
+      border-left: var(--gedrat-row-cell-border);
+      margin-left: var(--gedrat-grid-cells-space);
+      border-radius: var(--gedrat-grid-cells-radius) 0 0
+        var(--gedrat-grid-cells-radius);
+    }
+
+    &.end-cell {
+      border-right: var(--gedrat-row-cell-border);
+      border-radius: 0 var(--gedrat-grid-cells-radius)
+        var(--gedrat-grid-cells-radius) 0;
+      margin-right: var(--gedrat-grid-cells-space);
+    }
+  }
+
+  .gedrat-grid-table-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    text-wrap: nowrap;
+    background-color: var(--bs-dark-bg-subtle);
+
+    padding: var(--gedrat-grid-cells-space);
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+
+    &.start-cell {
+      // background-color: red;
+    }
+    &.end-cell {
+      // background-color: red;
+    }
+  }
+
+  .zebra {
+    background-color: var(--gedrat-grid-bg-zebra-color);
+  }
+}
+
+```
 
 
 ## Types
@@ -55,17 +115,15 @@ The `IGridTable` interface defines the main table structure and includes propert
 ```typescript
 export interface IGridTable<T extends FieldValues> {
   data: T[];
-  columns: IColumn<T>[];
-  gridTableStyles?: IGridTableStyles;
+  columns: IColumn<T>[];  
   resizable?: boolean;
   sortable?: boolean;
   noDataText?: string;
 }
 ```
 
-- `data`: An array representing each row's data in the table.
+- `data`: An T array representing each row's data in the table.
 - `columns`: An array of columns defined by `IColumn`.
-- `gridTableStyles` (optional): Custom styles for the container, header, and rows.
 - `resizable` (optional): Allows columns to be resizable.
 - `sortable` (optional): Enables data sorting.
 - `noDataText` (optional): Text to display when there’s no data in the table.
@@ -79,31 +137,14 @@ The `IColumn` interface defines the structure of an individual column in the tab
 export interface IColumn<F extends FieldValues> {
   name: FieldName<F>;
   align?: 'left' | 'right' | 'center';
-  component?: React.ReactNode;
+  
 }
 ```
 
 **Properties:**
 - `name`: Name of the field corresponding to the column data.
 - `align` (optional): Alignment of the column content (`'left'`, `'right'`, or `'center'`).
-- `component` (optional): A custom React component to render within the column.
 
-
-### Style
-The `IGridTableStyles` interface allows you to specify custom CSS styles for the table container, header, and rows.
-
-```typescript
-export interface IGridTableStyles {
-  containerStyle: React.CSSProperties;
-  headerStyle: React.CSSProperties;
-  rowStyle: React.CSSProperties;
-}
-```
-
-**Properties:**
-- `containerStyle`: Defines the main container style of the table.
-- `headerStyle`: Defines the style of the column headers.
-- `rowStyle`: Defines the style of the table rows.
 
 
 ## Installation
@@ -113,6 +154,9 @@ To use this component, install it from npm:
 ```bash
 npm install 
 ```
+
+
+
 
 ## License
 

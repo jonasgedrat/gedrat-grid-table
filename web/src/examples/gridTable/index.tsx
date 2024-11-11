@@ -1,10 +1,11 @@
 import { GridTable } from '@gedrat/grid-table'
-import { columns, data } from './data'
+import { columns } from './data'
+import { hugeData } from './hugeData'
 
 const GridTableExample = () => {
   return (
     <div>
-      <GridTable data={data} columns={columns} sortable />
+      <GridTable data={hugeData} columns={columns} sortable resizable />
     </div>
   )
 }

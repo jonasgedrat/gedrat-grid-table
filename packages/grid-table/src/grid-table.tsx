@@ -1,5 +1,4 @@
 import { FieldValues, IGridTable } from './types'
-import { defaultGridTableStyles } from './styles'
 import { useGridTable } from './useGridTable'
 import GridTableHeader from './grid-table-header'
 import GridTableRows from './grid-table-rows'
@@ -9,7 +8,6 @@ const GridTable = <T extends FieldValues>(props: IGridTable<T>) => {
   const {
     data = [],
     columns = [],
-    gridTableStyles = defaultGridTableStyles,
     resizable = false,
     sortable = false,
     noDataText = 'No data available',
@@ -25,9 +23,9 @@ const GridTable = <T extends FieldValues>(props: IGridTable<T>) => {
   return (
     <div style={{ margin: 1, padding: 1 }}>
       <div
+        className="gedrat-grid-table"
         ref={containerRef}
         style={{
-          ...gridTableStyles.containerStyle,
           ...containerStyle,
           display: 'grid',
           gridTemplateColumns: `repeat(${columns.length}, 1fr)`,
@@ -36,17 +34,11 @@ const GridTable = <T extends FieldValues>(props: IGridTable<T>) => {
       >
         <GridTableHeader
           columns={columns}
-          headerStyle={gridTableStyles.headerStyle}
           sortable={sortable}
           handleSort={handleSort}
           sortConfig={sortConfig}
         />
-
-        <GridTableRows
-          data={sortedData}
-          columns={columns}
-          rowStyle={gridTableStyles.rowStyle}
-        />
+        <GridTableRows data={sortedData} columns={columns} />
       </div>
     </div>
   )
