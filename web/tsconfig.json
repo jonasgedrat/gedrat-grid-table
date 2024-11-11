@@ -1,7 +1,14 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "jsx": "preserve",
+    "strictNullChecks": true
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.jsx", "global.d.ts"],
+  "exclude": ["node_modules"]
 }
