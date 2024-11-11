@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GridTable } from '@gedrat/grid-table'
+import { FieldName, GridTable } from '@gedrat/grid-table'
 import { columns, MyData } from './data'
 import { hugeData } from './hugeData'
 
@@ -14,6 +14,28 @@ const GridTableExample = () => {
     setSelected(e)
   }
 
+  const handleDelete = (e: MyData) => {
+    setSelected(undefined)
+    alert('delete: ' + JSON.stringify(e))
+  }
+
+  //optional
+  const customRender = (record: MyData, columnName: FieldName<MyData>) => {
+    if (columnName === '...') {
+      if (record === selected) {
+        return <div onClick={() => handleDelete(record)}>delete</div>
+      }
+      return <></>
+    }
+
+    const cellValue = `${record[columnName]}`
+
+    if (columnName === 'name') {
+      return <div className="text-warning fw-bold">{cellValue}</div>
+    }
+    return <>{cellValue}</>
+  }
+
   return (
     <div>
       <GridTable
@@ -23,6 +45,7 @@ const GridTableExample = () => {
         handleSelect={handleSelect}
         sortable
         resizable
+        customRender={customRender}
       />
     </div>
   )

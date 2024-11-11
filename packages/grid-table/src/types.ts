@@ -14,4 +14,5 @@ export interface IGridTable<T extends FieldValues> {
   noDataText?: string
   selected?: T
   handleSelect?: (record: T) => void
+  customRender?: (record: T, columnName: FieldName<T>) => React.ReactNode
 }

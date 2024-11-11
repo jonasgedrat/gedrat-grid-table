@@ -15,6 +15,7 @@ export const columns: IColumn<MyData>[] = [
     name: 'creationDate',
     align: 'center',
   },
+  { name: '...' },
 ]
 
 export const data: MyData[] = [

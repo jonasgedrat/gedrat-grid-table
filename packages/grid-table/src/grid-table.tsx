@@ -13,6 +13,7 @@ const GridTable = <T extends FieldValues>(props: IGridTable<T>) => {
     noDataText = 'No data available',
     selected = undefined,
     handleSelect,
+    customRender,
   } = props
 
   const { containerRef, containerStyle } = useGridTable(resizable)
@@ -52,6 +53,7 @@ const GridTable = <T extends FieldValues>(props: IGridTable<T>) => {
           columns={columns}
           selected={selected}
           onSelectRow={onSelectRow}
+          customRender={customRender}
         />
       </div>
     </div>
