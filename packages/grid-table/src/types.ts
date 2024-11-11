@@ -1,3 +1,5 @@
+import React from 'react'
+
 export type FieldValues = Record<string, unknown>
 export type FieldName<F extends FieldValues> = keyof F & string
 
@@ -16,4 +18,8 @@ export interface IGridTable<T extends FieldValues> {
   selected?: T
   handleSelect?: (record: T) => void
   customRender?: (record: T, columnName: FieldName<T>) => React.ReactNode
+  sortComponents?: {
+    asc: string | React.ReactNode
+    desc: string | React.ReactNode
+  }
 }

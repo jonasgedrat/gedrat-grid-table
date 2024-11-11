@@ -1,4 +1,4 @@
-import { FieldValues } from '@gedrat/grid-table'
+import { FieldValues } from 'gedrat-grid-table'
 
 export interface HugeData extends FieldValues {
   id: number

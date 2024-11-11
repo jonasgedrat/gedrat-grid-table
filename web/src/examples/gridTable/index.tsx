@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react'
-import { FieldName, GridTable } from '@gedrat/grid-table'
+import { FieldName, GridTable } from 'gedrat-grid-table'
 import { columns, MyData } from './config'
 import { hugeData } from './hugeData'
-import { Trash2 } from 'lucide-react'
+import { ArrowDown, ArrowUp, Trash2 } from 'lucide-react'
 
 const GridTableExample = () => {
   const [selected, setSelected] = useState<MyData | undefined>()
@@ -37,7 +37,6 @@ const GridTableExample = () => {
       if (columnName === 'name') {
         return (
           <div className={`${isActive ? '' : 'text-warning'} fw-bold`}>
-            {cellValue} {cellValue} {cellValue} {cellValue} {cellValue}{' '}
             {cellValue}
           </div>
         )
@@ -58,6 +57,10 @@ const GridTableExample = () => {
         sortable
         resizable
         customRender={customRender}
+        sortComponents={{
+          asc: <ArrowUp size={12} />,
+          desc: <ArrowDown size={12} />,
+        }}
       />
     </div>
   )

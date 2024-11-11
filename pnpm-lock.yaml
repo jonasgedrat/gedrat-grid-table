@@ -75,12 +75,12 @@ importers:
 
   web:
     dependencies:
-      '@gedrat/grid-table':
-        specifier: workspace:*
-        version: link:../packages/grid-table
       bootstrap:
         specifier: ^5.3.3
         version: 5.3.3(@popperjs/core@2.11.8)
+      gedrat-grid-table:
+        specifier: workspace:*
+        version: link:../packages/grid-table
       lucide-react:
         specifier: ^0.456.0
         version: 0.456.0(react@18.3.1)

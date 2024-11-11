@@ -9,7 +9,7 @@
 ```typescript
 import React from 'react';
 import { useState } from 'react'
-import { IGridTable, IColumn, IGridTableStyles, FieldValues } from '@gedrat-grid-table';
+import { IGridTable, IColumn, IGridTableStyles, FieldValues } from 'gedrat-grid-table';
 
 //data interface
 interface UserData  {

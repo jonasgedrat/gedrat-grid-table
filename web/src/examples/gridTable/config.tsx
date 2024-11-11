@@ -1,4 +1,4 @@
-import { FieldValues, IColumn } from '@gedrat/grid-table'
+import { FieldValues, IColumn } from 'gedrat-grid-table'
 
 export interface MyData extends FieldValues {
   id: number

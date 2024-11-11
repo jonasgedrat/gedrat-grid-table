@@ -5,11 +5,16 @@ const GridTableHeader = <T extends FieldValues>({
   sortable,
   handleSort,
   sortConfig,
+  sortComponents,
 }: {
   columns: IColumn<T>[]
   sortable: boolean
   handleSort: (columnName: keyof T) => void
   sortConfig: { key: string; direction: 'asc' | 'desc' }
+  sortComponents?: {
+    asc: string | React.ReactNode
+    desc: string | React.ReactNode
+  }
 }) => {
   if (!Array.isArray(columns) || columns.length === 0) {
     return <h5>No columns provided</h5>
@@ -22,14 +27,14 @@ const GridTableHeader = <T extends FieldValues>({
         const positionClassName =
           i === 0 ? 'start-cell' : i === colsLength - 1 ? 'end-cell' : ''
 
-        const sortText =
+        const sortComponent =
           sortConfig.key === ''
             ? ''
             : sortConfig.key !== column.name
               ? ''
               : sortConfig.key === column.name && sortConfig.direction === 'asc'
-                ? '↑'
-                : '↓'
+                ? sortComponents?.asc || '<'
+                : sortComponents?.desc || ':'
 
         return (
           <div
@@ -40,7 +45,8 @@ const GridTableHeader = <T extends FieldValues>({
             }}
             onClick={() => sortable && handleSort(column.name)}
           >
-            {sortText} {sortText && <>&nbsp;</>}
+            {sortComponent}&nbsp;
+            {/* {sortComponents && sortComponents.asc} */}
             {column.name}
           </div>
         )

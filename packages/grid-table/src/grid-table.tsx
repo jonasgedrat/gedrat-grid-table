@@ -14,6 +14,7 @@ const GridTable = <T extends FieldValues>(props: IGridTable<T>) => {
     selected = undefined,
     handleSelect,
     customRender,
+    sortComponents,
   } = props
 
   const { containerRef, containerStyle } = useGridTable(resizable)
@@ -55,6 +56,7 @@ const GridTable = <T extends FieldValues>(props: IGridTable<T>) => {
           sortable={sortable}
           handleSort={handleSort}
           sortConfig={sortConfig}
+          sortComponents={sortComponents}
         />
         <GridTableRows
           data={sortedData}
