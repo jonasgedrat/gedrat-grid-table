@@ -21,17 +21,23 @@ const GridTableExample = () => {
 
   //optional
   const customRender = (record: MyData, columnName: FieldName<MyData>) => {
-    if (columnName === '...') {
-      if (record === selected) {
+    const isActive = record === selected
+
+    if (columnName === '') {
+      if (isActive) {
         return <div onClick={() => handleDelete(record)}>delete</div>
       }
-      return <></>
+      return <>-</>
     }
 
     const cellValue = `${record[columnName]}`
 
     if (columnName === 'name') {
-      return <div className="text-warning fw-bold">{cellValue}</div>
+      return (
+        <div className={`${isActive ? '' : 'text-warning'} fw-bold`}>
+          {cellValue}
+        </div>
+      )
     }
     return <>{cellValue}</>
   }
