@@ -7,19 +7,24 @@
   ],
   "license": "MIT",
   "main": "src/index.ts",
-  "sideEffects": false,
   "files": [
     "dist"
   ],
+  "module": "./dist/index.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "sideEffects": false,
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "build": "tsup src",
-    "dev": "pnpm build:fast --watch",
-    "clean": "rimraf dist .turbo",
-    "typecheck": "tsc --noEmit",
-    "build:fast": "tsup src"
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast --watch"
   },
   "peerDependencies": {
     "react": ">=18",
