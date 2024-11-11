@@ -10,13 +10,6 @@
   "files": [
     "dist"
   ],
-  "module": "./dist/index.esm.js",
-  "exports": {
-    ".": {
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js"
-    }
-  },
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
@@ -24,7 +17,9 @@
   "scripts": {
     "build": "tsup src",
     "build:fast": "tsup src",
-    "dev": "pnpm build:fast --watch"
+    "dev": "pnpm build:fast --watch",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -34,6 +29,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "@types/react": "^18.3.10",
-    "@types/react-dom": "^18.3.0"
+    "@types/react-dom": "^18.3.0",
+    "clean-package": "2.2.0"
   }
 }
