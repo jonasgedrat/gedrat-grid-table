@@ -32,8 +32,9 @@
     "clean": "pnpm clean:node-modules && pnpm clean:dist &&  pnpm install",
     "clean:node-modules": "npx rimraf --glob **/node_modules",
     "clean:dist": "npx rimraf --glob **/dist",
+    "patch-grid-version": "npm --prefix ./packages/grid-table version patch --no-git-tag-version",
     "build-grid": "pnpm clean && pnpm --filter gedrat-grid-table build",
-    "publish-grid": "pnpm build-grid && pnpm --filter gedrat-grid-table publish",
+    "publish-grid": "pnpm build-grid && pnpm patch-grid-version && pnpm --filter gedrat-grid-table publish",
     "check": "eslint .  --fix"
   },
   "devDependencies": {
