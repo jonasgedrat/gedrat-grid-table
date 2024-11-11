@@ -1,15 +1,10 @@
 import { useState } from 'react'
-// import { IColumn } from './types'
-
 interface SortConfig {
   key: string
   direction: 'asc' | 'desc'
 }
 
-const useSort = <T extends Record<string, unknown>>(
-  data: T[]
-  //columns: IColumn<T>[]
-) => {
+const useSort = <T extends Record<string, unknown>>(data: T[]) => {
   const [sortConfig, setSortConfig] = useState<SortConfig>({
     key: '',
     direction: 'asc',

@@ -15,8 +15,6 @@ const GridTableHeader = <T extends FieldValues>({
     return <h5>No columns provided</h5>
   }
 
-  console.log(sortConfig)
-
   const colsLength = columns.length
   return (
     <>

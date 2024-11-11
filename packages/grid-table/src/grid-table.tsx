@@ -11,19 +11,28 @@ const GridTable = <T extends FieldValues>(props: IGridTable<T>) => {
     resizable = false,
     sortable = false,
     noDataText = 'No data available',
+    selected = undefined,
+    handleSelect,
   } = props
 
   const { containerRef, containerStyle } = useGridTable(resizable)
   const { sortedData, handleSort, sortConfig } = useSort(data)
 
+  const onSelectRow = (record: T) => {
+    if (!handleSelect) return
+    handleSelect(record)
+  }
+
   if (!Array.isArray(data) || data.length === 0) {
     return <h5>{noDataText}</h5>
   }
 
+  const selectable = handleSelect ? 'selectable' : ''
+
   return (
     <div style={{ margin: 1, padding: 1 }}>
       <div
-        className="gedrat-grid-table"
+        className={`gedrat-grid-table ${selectable}`}
         ref={containerRef}
         style={{
           ...containerStyle,
@@ -38,7 +47,12 @@ const GridTable = <T extends FieldValues>(props: IGridTable<T>) => {
           handleSort={handleSort}
           sortConfig={sortConfig}
         />
-        <GridTableRows data={sortedData} columns={columns} />
+        <GridTableRows
+          data={sortedData}
+          columns={columns}
+          selected={selected}
+          onSelectRow={onSelectRow}
+        />
       </div>
     </div>
   )

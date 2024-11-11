@@ -4,9 +4,12 @@
 ## Super simple table less grid component that just works.
 
 
+
+
 ```typescript
 import React from 'react';
-import { IGridTable, IColumn, IGridTableStyles, FieldValues } from './GridTable';
+import { useState } from 'react'
+import { IGridTable, IColumn, IGridTableStyles, FieldValues } from '@gedrat-grid-table';
 
 //data interface
 interface UserData  {
@@ -18,26 +21,38 @@ interface UserData  {
 const data: UserData[] = [
   { name: 'Alice', age: 25, email: 'alice@example.com' },
   { name: 'Bob', age: 30, email: 'bob@example.com' },
-];
+]
 
 //columns definition
 const columns: IColumn<UserData>[] = [
   { name: 'name', align: 'left' },
   { name: 'age', align: 'center' },
   { name: 'email', align: 'right' },
-];
+]
 
 //component usage
 const UserDataGridTable = () => {
-  return (
-    <GridTable
-      data={data}
-      columns={columns}   
-      noDataText="No data available"
-      sortable resizable
-    />
-  );
-};
+ const [selected, setSelected] = useState<MyData | undefined>()
+
+  const handleSelect = (e: MyData) => {
+    if (selected === e) {
+      setSelected(undefined)
+      return
+    }
+    setSelected(e)
+  }
+
+  return (   
+      <GridTable
+        data={data}
+        columns={columns}
+        selected={selected}
+        handleSelect={handleSelect}
+        sortable
+        resizable
+      />    
+  )
+}
 
 export default UserDataGridTable;
 ```
@@ -124,7 +139,7 @@ export interface IGridTable<T extends FieldValues> {
 
 - `data`: An T array representing each row's data in the table.
 - `columns`: An array of columns defined by `IColumn`.
-- `resizable` (optional): Allows columns to be resizable.
+- `resizable` (optional): Fit container to the rest of windows height.
 - `sortable` (optional): Enables data sorting.
 - `noDataText` (optional): Text to display when there’s no data in the table.
 

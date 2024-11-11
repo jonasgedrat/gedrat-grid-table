@@ -12,4 +12,6 @@ export interface IGridTable<T extends FieldValues> {
   resizable?: boolean
   sortable?: boolean
   noDataText?: string
+  selected?: T
+  handleSelect?: (record: T) => void
 }

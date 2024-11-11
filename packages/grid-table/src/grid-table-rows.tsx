@@ -4,9 +4,13 @@ import { FieldValues, IColumn } from './types'
 const GridTableRows = <T extends FieldValues>({
   data,
   columns,
+  selected = undefined,
+  onSelectRow,
 }: {
   data: T[]
   columns: IColumn<T>[]
+  selected?: T
+  onSelectRow: (record: T) => void
 }) => {
   const colsLength = columns.length
   return (
@@ -17,10 +21,12 @@ const GridTableRows = <T extends FieldValues>({
             const cellValue = `${record[column.name]}`
             const positionClassName =
               i === 0 ? 'start-cell' : i === colsLength - 1 ? 'end-cell' : ''
+            const isActive = record === selected ? 'active' : ''
 
             return (
               <div
-                className={`gedrat-grid-row-cell
+                onClick={() => onSelectRow(record)}
+                className={`gedrat-grid-row-cell ${isActive}
                   ${rowIndex % 2 === 0 ? 'zebra' : ''} ${positionClassName}`}
                 key={`${rowIndex}-${column.name}`}
                 style={{

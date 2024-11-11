@@ -1,11 +1,29 @@
+import { useState } from 'react'
 import { GridTable } from '@gedrat/grid-table'
-import { columns } from './data'
+import { columns, MyData } from './data'
 import { hugeData } from './hugeData'
 
 const GridTableExample = () => {
+  const [selected, setSelected] = useState<MyData | undefined>()
+
+  const handleSelect = (e: MyData) => {
+    if (selected === e) {
+      setSelected(undefined)
+      return
+    }
+    setSelected(e)
+  }
+
   return (
     <div>
-      <GridTable data={hugeData} columns={columns} sortable resizable />
+      <GridTable
+        data={hugeData}
+        columns={columns}
+        selected={selected}
+        handleSelect={handleSelect}
+        sortable
+        resizable
+      />
     </div>
   )
 }
